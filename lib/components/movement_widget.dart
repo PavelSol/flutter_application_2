@@ -1,6 +1,6 @@
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_application_2/home_page_widget.dart';
 
 import 'movement_model.dart';
 export 'movement_model.dart';
@@ -49,9 +49,7 @@ class _MovementWidgetState extends State<MovementWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
               child: FFButtonWidget(
-                onPressed: () {
-                  print('Up_button pressed ...');
-                },
+                onPressed: () {},
                 text: '',
                 icon: Icon(
                   Icons.arrow_upward,

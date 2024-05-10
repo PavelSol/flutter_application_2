@@ -10,6 +10,7 @@ import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
 
 import 'home_page_model.dart';
 export 'home_page_model.dart';
+export 'home_page_widget.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({super.key});
@@ -48,7 +49,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomePageModel());
-    BluetoothConnection.toAddress(widget.server.address).then((_connection) {
+    BluetoothConnection.toAddress("00:21:13:00:19:5C").then((_connection) {
       print('Connected to the device');
       connection = _connection;
       setState(() {
@@ -243,7 +244,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         padding: EdgeInsetsDirectional.fromSTEB(30, 10, 0, 0),
                         child: FFButtonWidget(
                           onPressed: () {
-                            print('Button pressed ...');
+                            _sendMessage("w 4");
                           },
                           text: 'Button',
                           options: FFButtonOptions(
@@ -279,7 +280,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 
-void _onDataReceived(Uint8List data) {
+  void _onDataReceived(Uint8List data) {
     // Allocate buffer for parsed data
     int backspacesCounter = 0;
     data.forEach((byte) {
@@ -354,4 +355,3 @@ void _onDataReceived(Uint8List data) {
     }
   }
 }
-
